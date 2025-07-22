@@ -50,7 +50,7 @@ const CurrencyInput = ({ allCurrency }) => {
           }}
         >
           {allCurrency.map((c) => (
-            <option key={`from-${c}`} value={c}>{c}</option>
+            <option key={`from-${c}`} value={c} disabled={c === secondValue}>{c}</option>
           ))
           }
         </select>
@@ -77,7 +77,7 @@ const CurrencyInput = ({ allCurrency }) => {
             setSecondValue(e.target.value)
           }}>
           {allCurrency.map((c) => (
-            <option key={`from-${c}`} value={c}>{c}</option>
+            <option key={`from-${c}`} value={c} disabled={c === firstValue}>{c}</option>
           ))
           }
         </select>
