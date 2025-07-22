@@ -7,21 +7,21 @@ function App() {
   const [currencyRates, setCurrencyRates] = useState([])
 
   useEffect(() => {
-    axios.get('https://api.frankfurter.app/latest')
-      .then(res => {
-        setCurrencyComplete(res.data.base)
-        console.log(res.data.base)
-      })
+    const fetchAllCurrencies = async () => {
+      try {
+        const res = await axios.get('https://api.frankfurter.app/latest');
+        setCurrencyComplete(res.data.base);
+        setCurrencyRates(res.data.rates);
+        console.log(res.data.base);
+        console.log(res.data.rates);
+      } catch (err) {
+        console.error('Errore nel recupero dei dati:', err);
+      }
+    };
 
-    axios.get('https://api.frankfurter.app/latest')
-      .then(res => {
-        setCurrencyRates(res.data.rates)
-        console.log(res.data.rates)
-      })
-      .catch(err => {
-        console.error('errore:', err);
-      })
-  }, [])
+    fetchAllCurrencies();
+  }, []);
+
   const allCurrency = [currencyComplete, ...Object.keys(currencyRates)]
 
   return (

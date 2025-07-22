@@ -32,17 +32,19 @@ const Graphic = ({ fromAmount, toAmount, firstValue, secondValue }) => {
 
 
   useEffect(() => {
-    axios.get(`https://api.frankfurter.app/${start}..${endDate}?from=${firstValue}&to=${secondValue}`)
-      .then((res) => {
+    const fetchGraphic = async () => {
+      try {
+        const res = await axios.get(`https://api.frankfurter.app/${start}..${endDate}?from=${firstValue}&to=${secondValue}`)
         const labels = Object.keys(res.data.rates); // date
         const data = labels.map(date => res.data.rates[date][secondValue]); // valori
         setX(labels);
         setY(data);
-      })
-
-      .catch((err) => {
+      }
+      catch (err) {
         console.error('Errore nel recupero dei dati del grafico:', err)
-      })
+      }
+    };
+    fetchGraphic()
   }, [fromAmount, toAmount, firstValue, secondValue])
 
   const data = {

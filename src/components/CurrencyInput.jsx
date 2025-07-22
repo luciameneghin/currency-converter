@@ -16,26 +16,23 @@ const CurrencyInput = ({ allCurrency }) => {
       return;
     }
 
-    if (isFromInputActive === true) {
-      axios
-        .get(`https://api.frankfurter.app/latest?amount=${fromAmount}&from=${firstValue}&to=${secondValue}`)
-        .then((res) => {
+    const fetchCurrency = async () => {
+      try {
+        if (isFromInputActive === true) {
+          const res = await axios.get(`https://api.frankfurter.app/latest?amount=${fromAmount}&from=${firstValue}&to=${secondValue}`)
           setToAmount(res.data.rates[secondValue])
-        })
-        .catch((err) => {
-          console.error('Errore di chiamata del valore:', err)
-        })
-    } else {
-      axios
-        .get(`https://api.frankfurter.app/latest?amount=${toAmount}&from=${secondValue}&to=${firstValue}`)
-        .then((res) => {
+        } else {
+          const res = await axios.get(`https://api.frankfurter.app/latest?amount=${toAmount}&from=${secondValue}&to=${firstValue}`)
           setFromAmount(res.data.rates[firstValue])
-        })
-        .catch((err) => {
-          console.error('Errore di chiamata del valore:', err)
-        })
-    }
-  }, [fromAmount, toAmount, firstValue, secondValue])
+        }
+      } catch (err) {
+        console.error('Errore di chiamata del valore:', err)
+      }
+    };
+
+
+    fetchCurrency()
+  }, [fromAmount, toAmount, firstValue, secondValue]);
 
 
 
