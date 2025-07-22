@@ -38,7 +38,6 @@ const CurrencyInput = ({ allCurrency }) => {
 
   return (
     <div className='container mx-auto'>
-
       <div className='flex'>
         <div>
           <select
@@ -62,7 +61,7 @@ const CurrencyInput = ({ allCurrency }) => {
               setIsFromInputActive(true)
               setFromAmount(Number(e.target.value))
             }}
-            className='border'
+            className='border rounded'
           />
         </div>
 
@@ -89,12 +88,12 @@ const CurrencyInput = ({ allCurrency }) => {
               setIsFromInputActive(false)
               setToAmount(Number(e.target.value))
             }}
-            className='border'
+            className='border rounded'
           />
         </div>
       </div>
 
-      <div className='text-center my-20'>
+      <div className='text-center'>
         <Graphic
           fromAmount={fromAmount}
           toAmount={toAmount}

@@ -5,9 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        pixel: ['"Press Start 2P"', 'cursive'],
+        body: ['Quicksand', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
-
 

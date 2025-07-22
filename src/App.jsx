@@ -25,9 +25,11 @@ function App() {
   const allCurrency = [currencyComplete, ...Object.keys(currencyRates)]
 
   return (
-    <div className='container mx-auto'>
-      <h1>Cambio Valuta</h1>
-      <CurrencyInput allCurrency={allCurrency} />
+    <div className="bg-pink-100 min-h-screen py-10 font-body">
+      <h1 className="text-3xl text-center font-pixel text-purple-600 mt-10">Currency Cutie</h1>
+      <div className="bg-white shadow-xl rounded-2xl p-10 w-[90%] max-w-xl mx-auto mt-8">
+        <CurrencyInput allCurrency={allCurrency} />
+      </div>
     </div>
 
   );
