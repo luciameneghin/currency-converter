@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Graphic from './Graphic'
 
 const CurrencyInput = ({ allCurrency }) => {
   const [firstValue, setFirstValue] = useState('EUR')
@@ -39,58 +40,71 @@ const CurrencyInput = ({ allCurrency }) => {
 
 
   return (
-    <div className='container mx-auto flex'>
-      <div>
-        <select
-          name='from'
-          value={firstValue}
-          onChange={(e) => {
-            setIsFromInputActive(true)
-            setFirstValue(e.target.value)
-          }}
-        >
-          {allCurrency.map((c) => (
-            <option key={`from-${c}`} value={c} disabled={c === secondValue}>{c}</option>
-          ))
-          }
-        </select>
-        <input
-          type="number"
-          name='from'
-          value={fromAmount}
-          onChange={(e) => {
-            setIsFromInputActive(true)
-            setFromAmount(Number(e.target.value))
-          }}
-          className='border'
-        />
+    <div className='container mx-auto'>
+
+      <div className='flex'>
+        <div>
+          <select
+            name='from'
+            value={firstValue}
+            onChange={(e) => {
+              setIsFromInputActive(true)
+              setFirstValue(e.target.value)
+            }}
+          >
+            {allCurrency.map((c) => (
+              <option key={`from-${c}`} value={c} disabled={c === secondValue}>{c}</option>
+            ))
+            }
+          </select>
+          <input
+            type="number"
+            name='from'
+            value={fromAmount}
+            onChange={(e) => {
+              setIsFromInputActive(true)
+              setFromAmount(Number(e.target.value))
+            }}
+            className='border'
+          />
+        </div>
+
+        <span className='mx-20'>→</span>
+
+        <div>
+          <select
+            name='to'
+            value={secondValue}
+            onChange={(e) => {
+              setIsFromInputActive(false)
+              setSecondValue(e.target.value)
+            }}>
+            {allCurrency.map((c) => (
+              <option key={`from-${c}`} value={c} disabled={c === firstValue}>{c}</option>
+            ))
+            }
+          </select>
+          <input
+            type="number"
+            name='to'
+            value={toAmount}
+            onChange={(e) => {
+              setIsFromInputActive(false)
+              setToAmount(Number(e.target.value))
+            }}
+            className='border'
+          />
+        </div>
       </div>
 
-      <span className='mx-20'>→</span>
-
-      <div>
-        <select
-          name='to'
-          value={secondValue}
-          onChange={(e) => {
-            setIsFromInputActive(false)
-            setSecondValue(e.target.value)
-          }}>
-          {allCurrency.map((c) => (
-            <option key={`from-${c}`} value={c} disabled={c === firstValue}>{c}</option>
-          ))
-          }
-        </select>
-        <input
-          type="number"
-          name='to'
-          value={toAmount}
-          onChange={(e) => {
-            setIsFromInputActive(false)
-            setToAmount(Number(e.target.value))
-          }}
-          className='border'
+      <div className='text-center my-20'>
+        <Graphic
+          fromAmount={fromAmount}
+          toAmount={toAmount}
+          firstValue={firstValue}
+          secondValue={secondValue}
         />
+
       </div>
     </div >
   )
