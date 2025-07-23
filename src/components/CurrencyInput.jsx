@@ -35,75 +35,83 @@ const CurrencyInput = ({ allCurrency }) => {
   }, [fromAmount, toAmount, firstValue, secondValue]);
 
 
-
   return (
-    <div className='container mx-auto'>
-      <div className='flex'>
-        <div>
+    <div className="flex flex-col gap-10">
+
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        {/* FROM */}
+        <div className="flex-1 min-w-[200px]">
+          <label className="block text-highlight mb-2">From</label>
           <select
-            name='from'
+            name="from"
             value={firstValue}
             onChange={(e) => {
               setIsFromInputActive(true)
               setFirstValue(e.target.value)
             }}
+            className="bg-soft text-dark p-2 rounded w-full"
           >
             {allCurrency.map((c) => (
               <option key={`from-${c}`} value={c} disabled={c === secondValue}>{c}</option>
-            ))
-            }
+            ))}
           </select>
           <input
             type="number"
-            name='from'
+            name="from"
             value={fromAmount}
             onChange={(e) => {
               setIsFromInputActive(true)
               setFromAmount(Number(e.target.value))
             }}
-            className='border rounded'
+            className="text-3xl text-right bg-transparent border-b-2 border-highlight focus:outline-none focus:ring-0 w-full mt-2 placeholder:text-light"
           />
         </div>
 
-        <span className='mx-20'>→</span>
+        {/* Freccia */}
+        <div className="text-4xl text-highlight self-center">→</div>
 
-        <div>
+        {/* TO */}
+        <div className="flex-1 min-w-[200px]">
+          <label className="block text-highlight mb-2">To</label>
           <select
-            name='to'
+            name="to"
             value={secondValue}
             onChange={(e) => {
               setIsFromInputActive(false)
               setSecondValue(e.target.value)
-            }}>
+            }}
+            className="bg-soft text-dark p-2 rounded w-full"
+          >
             {allCurrency.map((c) => (
-              <option key={`from-${c}`} value={c} disabled={c === firstValue}>{c}</option>
-            ))
-            }
+              <option key={`to-${c}`} value={c} disabled={c === firstValue}>{c}</option>
+            ))}
           </select>
           <input
             type="number"
-            name='to'
+            name="to"
             value={toAmount}
             onChange={(e) => {
               setIsFromInputActive(false)
               setToAmount(Number(e.target.value))
             }}
-            className='border rounded'
+            className="text-3xl text-right bg-transparent border-b-2 border-highlight focus:outline-none focus:ring-0  w-full mt-2 placeholder:text-light"
           />
         </div>
       </div>
 
-      <div className='text-center'>
+      {/* Grafico */}
+      <div className="w-full mt-10">
         <Graphic
           fromAmount={fromAmount}
           toAmount={toAmount}
           firstValue={firstValue}
           secondValue={secondValue}
         />
-
       </div>
-    </div >
+
+    </div>
   )
+
 }
 
 export default CurrencyInput

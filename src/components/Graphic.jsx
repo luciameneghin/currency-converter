@@ -53,7 +53,7 @@ const Graphic = ({ fromAmount, toAmount, firstValue, secondValue }) => {
       {
         label: `${firstValue} → ${secondValue}`,
         data: y,
-        borderColor: 'rgb(75, 192, 192)',
+        borderColor: '#E3B505',
         tension: 0.2,
         fill: false,
       }
