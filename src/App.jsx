@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="bg-dark min-h-screen py-10 font-body">
       <div className="relative">
-        <p className="text-light max-w-md leading-[80px] text-2xl absolute top-[200px] left-20 ">
+        <p className="text-light max-w-md leading-[50px] absolute top-[200px] left-20 font-pixel">
           Visualizza l’andamento delle <br />valute negli ultimi 30 giorni<br />
           e ottieni conversioni aggiornate<br /> in tempo reale.
         </p>
@@ -63,7 +63,16 @@ function App() {
       ></div>
 
       <div className="relative z-20 p-10">
-        <h1 className="text-3xl text-center font-pixel text-light mt-10 neon-title">Currency Converter</h1>
+        <div className="flex items-center justify-center mr-[150px]">
+          <DotLottieReact
+            src="https://lottie.host/ab541168-501f-4176-836d-eb93b4531cb2/yfrUNeOWsi.lottie"
+            loop
+            autoplay
+            className="w-[150px]"
+          />
+          <h1 className="text-4xl text-center font-pixel text-light  neon-title">Currency Converter</h1>
+
+        </div>
         <div className="bg-white shadow-xl rounded-2xl p-10 w-[90%] max-w-xl mx-auto mt-8">
           <CurrencyInput allCurrency={allCurrency} />
         </div>

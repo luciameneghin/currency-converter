@@ -100,7 +100,7 @@ const CurrencyInput = ({ allCurrency }) => {
       </div>
 
       {/* Grafico */}
-      <div className="w-full mt-10">
+      <div className="w-full">
         <Graphic
           fromAmount={fromAmount}
           toAmount={toAmount}
